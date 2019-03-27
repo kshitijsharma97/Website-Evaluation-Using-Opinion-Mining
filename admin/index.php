@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="../js/parallax.min.js"></script>
   <style>
 
   .body-cont{
@@ -49,6 +50,58 @@
           max-width : 700px;
       }
     }
+
+    .parallax-window {
+            margin-top: -10px;
+            min-height: 600px;
+            background: transparent;
+            }
+          
+            .infos {
+            z-index: 10;
+            position: relative;
+            text-align: center;
+            padding-top: 300px;
+
+
+
+        }
+
+        .infos>h1 {
+            z-index: 10;
+            color: white;
+            background: rgba(54, 25, 25, .6);
+            border: 3px solid whitesmoke;
+
+
+            display: inline;
+            padding: 10px;
+            font-size: 50px;
+
+
+        }
+
+        .sec {
+            padding: 15px;
+            z-index: 5;
+            font-family: sans-serif;
+            font-size: 3em;
+            border: 2px solid black;
+            text-align: center;
+            font-variant-caps: all-petite-caps;
+        }
+
+        .secdark {
+            padding: 15px;
+            color: white;
+            background-color: rgb(42, 48, 48);
+            font-family: sans-serif;
+
+            font-size: 3em;
+            border: 2px solid white;
+            text-align: center;
+            font-variant-caps: all-petite-caps;
+        }
   </style>
 </head>
 <body>
@@ -59,16 +112,15 @@
         });
      </script>
   
-<div class="container-fluid text-center body-cont">    
-  <div class="row content">
-   
-    <div class="col text-left"> 
-      <h1>Welcome</h1>
-      
-    </div>
-    
-  </div>
-</div>
+  <div class="">
+        <div class="parallax-window" data-parallax="scroll" data-z-index='0' data-image-src="../img/bg000.jpg" data-bleed="10">
+            <div class="infos">
+                <h1>WELCOME TO WEBSITE EVALUATION</h1>
+            </div>
+        </div>
+        <section class='sec'>our website reviews comments and rate them accordingly, also it does prioratizaton using SEO</section>
+        </div>
+
 
 
 

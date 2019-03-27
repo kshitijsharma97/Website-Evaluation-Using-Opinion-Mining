@@ -16,7 +16,7 @@
 
         $result = mysqli_query($db, $insertUserSql);
          if($result)
-            echo "<script type='text/javascript'>alert('Success!plz login to enter ');window.location.href = 'userlogin.html';</script>";
+            echo "<script type='text/javascript'>alert('Success!plz login to enter ');window.location.href = 'userlogin.php';</script>";
 
          
 

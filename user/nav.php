@@ -4,7 +4,7 @@ session_start();
 if(!isset($_SESSION['user_id'])){
 	echo "<SCRIPT type='text/javascript'> //not showing me this
 	alert('plz login');
-	window.location.replace('../userlogin.html');
+	window.location.replace('../userlogin.php');
 	</SCRIPT>";
  }
 

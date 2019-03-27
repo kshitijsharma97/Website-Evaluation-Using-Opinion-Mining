@@ -147,9 +147,15 @@
 			if(mysqli_num_rows($result) > 0) {
 
 				while($row = mysqli_fetch_assoc($result)) {
+					$url =$row['website_name'];
+					if((strpos($url, 'http') === 0) && filter_var($url, FILTER_VALIDATE_URL)) {
+					
+					} else {
+						$url ="https://".$row['website_name'];
+					}
 					echo "<tr>
 					<td>".$row['web_id']."</td>
-					<td><a href='".$row['website_name']."' target='_blank'><i class='glyphicon glyphicon-link'>go</i></a></td>
+					<td><a href='".$url."' target='_blank'><i class='glyphicon glyphicon-link'>go</i></a></td>
 					<td>".$row['website_name']."</td>
 					<td>".$row['avg_score']."</td>
 					<td><img class = 'imgs img-responsive' src='../img/".$row['remark'].".png' alt ='".$row['remark']."' />

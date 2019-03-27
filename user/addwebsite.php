@@ -106,7 +106,7 @@
                                     <span class="input-group-addon">
                                         <i class="glyphicon glyphicon-globe"></i>
                                     </span>
-                                    <input placeholder="http://www.example.com" class="form-control input-lg" type="url" id="website" required>
+                                    <input placeholder="http://www.example.com" class="form-control input-lg" type="url" id="website" name="website" required>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                                     <span class="input-group-addon">
                                         <i class="glyphicon glyphicon-plus"></i>
                                     </span>
-                                    <textarea id="tag-in" required></textarea>
+                                    <textarea id="tag-in" name="tags" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -143,7 +143,7 @@
             <div class="col-sm-6">
                 <div class="col text-center">
                     <div class="embed-responsive embed-responsive-4by3">
-                        <iframe id="if" class="embed-responsive-item" src="https://glyphicons.bootstrapcheatsheets.com/"></iframe>
+                        <iframe id="if" class="embed-responsive-item" src="https://google.co.in/"></iframe>
                         <div class="embed-responsive  iii">
                         </div>
                     </div>
@@ -197,6 +197,8 @@
                 }
                 else if(data == "success")
                     alert("added");
+                else
+                alert(data);
             }
 
             );

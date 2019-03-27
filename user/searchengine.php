@@ -174,7 +174,7 @@
 
     });
 
-    $("#formss").on('submit', function (e) {
+    $("#formss").on('search', function (e) {
 
       e.preventDefault();
       searchWebsite = $("#searchWebsite").val();
@@ -195,26 +195,28 @@
 
 
         $.post("userinput.php", {
-          searchWebsite: searchWebsite,
+          searchWebsite: $("#searchWebsite").val(),
           type: type
         }, function (data) {
-          console.log(data);
+          //console.log(data);
+          populateSearch(data);
+          });
+        function populateSearch(data){
           data = JSON.parse(data);
 
           $('#result').empty();
-          $.each(data, function (key, data) {
-
+          $.each(data, function (key, value) {
+            //console.log(data);
           $('#result').append("<tr>\
-                        <td><a href='"+data.website_name+"' target='_blank'><i class='glyphicon glyphicon-search'></i></a></td>\
-                        <td>"+data.website_name+"</td>\
-						<td>"+data.avg_score+"</td>\
-						<td><img class = 'imgs img-responsive center' src='../img/"+data.remark+".png' alt ='"+data.remark+"' />\
+                        <td><a href='"+value.website_name+"' target='_blank'><i class='glyphicon glyphicon-search'></i></a></td>\
+                        <td>"+value.website_name+"</td>\
+						<td>"+value.avg_score+"</td>\
+						<td><img class = 'imgs img-responsive center' src='../img/"+value.remark+".png' alt ='"+value.remark+"' />\
 						</td></tr>");
 
           
         });
-          });
-        
+        }
 
      
 

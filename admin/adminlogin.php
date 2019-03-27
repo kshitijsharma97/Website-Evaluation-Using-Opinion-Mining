@@ -10,6 +10,7 @@
   <style>
 
   .body-cont{
+    margin-top :20px;
       margin-right : 30px;
       margin-left : 30px;
   }
@@ -68,25 +69,20 @@
 </head>
 <body>
 
-    <div class="my-nav"></div>
-    <script>
-               $(function(){
-               $(".my-nav").load("nav.html");
-           });
-        </script>
+    
 <div class="container-fluid text-center body-cont">    
     <div class="container">
-        <form class="well form-horizontal" action="adminloginAction.php" method="post">
+        <form class="well form-horizontal" action="" method="post">
             <fieldset>
             
             <!-- Form Name -->
-            <legend><center><h2><b>Admin Login Form</b></h2></center></legend><br>
+            <legend><center><h2><b>Admin Login</b></h2></center></legend><br>
           <div class="form-group">
             <label class="col-md-4 control-label">Username</label>  
             <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input  placeholder="Username" class="form-control"  type="text" name="username">
+            <input  placeholder="Username" class="form-control"  type="text" name="username" required>
               </div>
             </div>
           </div>
@@ -97,8 +93,8 @@
             <label class="col-md-4 control-label" >Password</label> 
               <div class="col-md-4 inputGroupContainer">
               <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input  placeholder="Password" class="form-control"  type="password" name="pwd">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input  placeholder="Password" class="form-control"  type="password" name="pwd" required>
               </div>
             </div>
           </div>
@@ -124,3 +120,29 @@
 
 </body>
 </html>
+<?php
+
+    include_once '../include/sqlConnect.php';
+    if(isset($_POST['login'])){
+        $username = $_POST["username"];
+        $pwd = $_POST["pwd"];
+        
+        $loginSql = "SELECT * FROM members WHERE mId = '$username' AND mPwd = '$pwd'";
+
+        $result = mysqli_query($db, $loginSql);
+
+        if (mysqli_num_rows($result) > 0) {
+            session_start();
+			$_SESSION['member_id'] = $username;
+            header('location:admin/index.php');
+
+        }
+           
+        else{
+
+            $message = 'Wrong id or Password';
+            echo "<script type='text/javascript'>alert('$message');window.location.href = 'adminlogin.php';</script>";
+            
+	 }
+        }
+?>

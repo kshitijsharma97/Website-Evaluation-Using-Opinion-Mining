@@ -2,9 +2,8 @@
 
 session_start();
 if(!isset($_SESSION['member_id'])){
-	echo "<SCRIPT type='text/javascript'> //not showing me this
-	alert('plz login');
-	window.location.replace('../userlogin.html');
+	echo "<SCRIPT type='text/javascript'>
+	window.location.replace('./adminlogin.php');
 	</SCRIPT>";
  }
 

@@ -12,13 +12,17 @@ if(isset($_POST['addweb'])){
     
     $sqlCheck = "SELECT * FROM `websites` where website_name = '$web'";
     $result = mysqli_query($db, $sqlCheck);
-    if(mysqli_num_rows($result) > 0)
-        echo "exists";
+    if(mysqli_num_rows($result) > 0){
+        echo "exists";}
     else{
         $webInsertSql = "INSERT INTO `websites`(`website_name`,`add_by_user`,`tags`)
          VALUES ('$web','$user','$tags')";
-          mysqli_query($db, $webInsertSql);
+          $result= mysqli_query($db, $webInsertSql);
+          if($result)
           echo "success";
+          else{
+              echo "Error: ".mysqli_error($db);
+          }
     }
 
 }
@@ -91,11 +95,19 @@ if(isset($_POST['searchWebsite'])){
      
        
         $result = mysqli_query($db, $sql);
+        if($result){
          $rr = array();
+         $i=1;
         while($row = mysqli_fetch_assoc($result))
-            $rr[] = $row;
+           { $rr[] = $row;
+        $i=$i+1;}
         
         echo json_encode($rr);
+        }
+        else
+        {
+          echo "<script type='text/javascript'>alert('Error: '".mysqli_error($db).");</script>";
+        }
 
 
   
