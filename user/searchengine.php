@@ -95,7 +95,7 @@
       <div class="row content">
         <div class="col-sm-12">
 
-          <form class="well form-horizontal" id="formss">
+          <!-- <form class="well form-horizontal" id="formss"> -->
             <fieldset>
               <legend>
                 <center>
@@ -127,14 +127,14 @@
                 <div class="col-md-12">
                   <br>
 
-                  <button type="submit" class="btn btn-lg btn-primary" id="search">Search Website</button>
+                  <button type="submit" class="btn btn-lg btn-primary" onclick="searchweb()" id="search">Search Website</button>
 
                 </div>
               </div>
 
 
             </fieldset>
-          </form>
+          <!-- </form> -->
 
 
         </div>
@@ -143,7 +143,7 @@
      
             <div class="col-sm-12">
 
-      <table class="table table-bordered table-striped text-center">
+      <table class="table table-bordered table-striped text-center" style="margin: 10px;">
               <thead>
                   <tr>
                       <th  class = "text-center btn-primary">go</th>
@@ -174,9 +174,10 @@
 
     });
 
-    $("#formss").on('search', function (e) {
+    function searchweb() {
+      console.log("click");
 
-      e.preventDefault();
+      //e.preventDefault();
       searchWebsite = $("#searchWebsite").val();
 
 
@@ -184,21 +185,22 @@
         $("#searchWebsite").focus();
       else {
 
-
+        console.log("else");
 
         $("#search").html("Searching..");
         $("#search").attr("disabled", true);
 
-        var type = "like";
+        var excat = "like";
         if ($('input[type=checkbox]').prop('checked'))
-          type = "match";
+          excat = "match";
 
 
         $.post("userinput.php", {
           searchWebsite: $("#searchWebsite").val(),
-          type: type
+          excat: excat
         }, function (data) {
-          //console.log(data);
+          
+          console.log("hey"+data);
           populateSearch(data);
           });
         function populateSearch(data){
@@ -228,7 +230,7 @@
       }
 
 
-    });
+    }
 
 
   </script>

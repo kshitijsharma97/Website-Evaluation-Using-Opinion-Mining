@@ -1,6 +1,7 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 session_start();
-$user = $_SESSION['user_id'];
+//$user = $_SESSION['user_id'];
 include_once "../include/sqlConnect.php";
 
 
@@ -82,7 +83,7 @@ if(isset($_POST['webIdd'])){
 if(isset($_POST['searchWebsite'])){
 
     $searchWebsite = $_POST['searchWebsite'];
-    $type = $_POST['type'];
+    $type = $_POST['excat'];
       $sql = "SELECT * from websites WHERE ";
 
       //for excact match
